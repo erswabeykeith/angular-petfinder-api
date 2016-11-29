@@ -1,4 +1,31 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngRoute']);
+
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+  .when('/cats', {
+    templateUrl: '/views/templates/cats.html',
+    controller: 'CatsController',
+    controllerAs: 'cats'
+  })
+  .when('/dogs' ,{
+    templateUrl: '/views/templates/dogs.html',
+    controller: 'DogsController',
+    controllerAs: 'dogs'
+  })
+  .when('/birds', {
+    templateUrl: '/views/templates/birds.html',
+    controller: 'BirdsController',
+    controllerAs: 'birds'
+  })
+  .otherwise({
+    redirectTo: 'cats'
+  });
+
+}]);
+
+
+
 
 app.controller('firstController', ['$http', function($http) {
   console.log('firstController up and running');
